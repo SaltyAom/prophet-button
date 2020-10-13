@@ -26,6 +26,12 @@ export class ProphetButton extends LitElement {
 
             sound.play()
 
+            sound.onloadeddata = () => {
+                setTimeout(() => {
+                    this.isPlaying = false
+                }, this.time * 1000 + 750)
+            }
+
             if ('mediaSession' in navigator) {
                 // @ts-ignore
                 navigator.mediaSession.setActionHandler('play', () =>
@@ -58,10 +64,6 @@ export class ProphetButton extends LitElement {
                 // @ts-ignore
                 navigator.mediaSession.setActionHandler('nexttrack', () => null)
             }
-
-            setTimeout(() => {
-                this.isPlaying = false
-            }, this.time * 1000 + 750)
         })
     }
 
