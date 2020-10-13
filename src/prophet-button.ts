@@ -19,18 +19,16 @@ export class ProphetButton extends LitElement {
     play() {
         if (this.isPlaying) this.isPlaying = false
 
+        let sound = this.shadowRoot?.getElementById("sound") as HTMLAudioElement
+
+        sound.play()
+
         requestAnimationFrame(() => {
             this.isPlaying = true
 
-            let sound = new Audio(`/sound/${this.src}`)
-
-            sound.play()
-
-            sound.onloadeddata = () => {
-                setTimeout(() => {
-                    this.isPlaying = false
-                }, this.time * 1000 + 750)
-            }
+            setTimeout(() => {
+                this.isPlaying = false
+            }, this.time * 1000 + 750)
 
             if ('mediaSession' in navigator) {
                 // @ts-ignore
@@ -73,6 +71,10 @@ export class ProphetButton extends LitElement {
                 display: flex;
                 justify-content: center;
                 margin: 20px 0;
+            }
+
+            #sound {
+                display: none;
             }
 
             #button {
@@ -141,7 +143,6 @@ export class ProphetButton extends LitElement {
 
     render() {
         return html`
-            <link rel="preload" href="/sound/${this.src}" as="audio" />
             <button id="button" @click="${this.play}">
                 <p id="title">
                     <slot></slot>
@@ -153,6 +154,9 @@ export class ProphetButton extends LitElement {
                         : ''}
                 />
             </button>
+            <audio id="sound" preload="metadata">
+                <source src="/sound/${this.src}" type="audio/mpeg" />
+            </audio>
         `
     }
 }
