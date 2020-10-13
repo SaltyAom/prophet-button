@@ -1,0 +1,64 @@
+#body,
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#body {
+    min-height: 100vh;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#app {
+    padding: 12px 0;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 560px;
+    max-height: 100vh;
+    font-family: Kanit;
+}
+
+#header > .title {
+    font-size: 48px;
+    color: #555;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+#header > .detail {
+    font-size: 24px;
+    color: #007aff;
+    text-align: center;
+    margin: 0;
+}
+
+#controller {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 980px;
+    grid-gap: 40px;
+}
+
+@media (max-width: 567.9px) {
+    #header > .title {
+        font-size: 32px;
+    }
+
+    #header > .detail {
+        font-size: 21px;
+    }
+}
