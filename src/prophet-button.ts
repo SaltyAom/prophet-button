@@ -17,15 +17,19 @@ export class ProphetButton extends LitElement {
     isPlaying = false
 
     play() {
-        if (this.isPlaying) this.isPlaying = false
-
-        let sound = this.shadowRoot?.getElementById("sound") as HTMLAudioElement
-
-        sound.play()
-
         requestAnimationFrame(() => {
             this.isPlaying = true
+        })
 
+        if (this.isPlaying) this.isPlaying = false
+
+        let sound = this.shadowRoot?.getElementById('sound') as HTMLAudioElement
+        
+        sound.pause()
+        sound.currentTime = 0
+        sound.play()
+
+        sound.onplaying = () => {
             setTimeout(() => {
                 this.isPlaying = false
             }, this.time * 1000 + 750)
@@ -62,7 +66,7 @@ export class ProphetButton extends LitElement {
                 // @ts-ignore
                 navigator.mediaSession.setActionHandler('nexttrack', () => null)
             }
-        })
+        }
     }
 
     static get styles() {
