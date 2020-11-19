@@ -55,6 +55,7 @@ const sounds = [
     'táng wan loie wan nîa.mp3',
     'tân pôo jà-rern sêung mâak bpai dûay bpan-yaa.mp3',
     'tân sà-maa-chík.mp3',
+    'trong née kor hĕe hĕe trong nun kor hĕe hĕe nee kor hĕe nun kor hĕe took took tée kor hĕe hĕe.mp3',
     'wan prá wan jâo mâi wáyn gan lóie.mp3',
     'wan-prá-yài ná.mp3',
     'yàak jà doo dtàe mĕe.mp3',
