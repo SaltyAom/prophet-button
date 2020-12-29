@@ -24,7 +24,7 @@ export class ProphetButton extends LitElement {
         if (this.isPlaying) this.isPlaying = false
 
         let sound = this.shadowRoot?.getElementById('sound') as HTMLAudioElement
-        
+
         sound.pause()
         sound.currentTime = 0
         sound.play()

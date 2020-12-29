@@ -59,11 +59,12 @@ const sounds = [
     'wan prá wan jâo mâi wáyn gan lóie.mp3',
     'wan-prá-yài ná.mp3',
     'yàak jà doo dtàe mĕe.mp3',
-    'yìp òk maa yìp òk maa.mp3']
+    'yìp òk maa yìp òk maa.mp3',
+    'where are you.mp3'
+]
 
 @customElement('random-prophet-button')
 export class RandomProphetButton extends LitElement {
-
     @internalProperty()
     src = sounds[Math.floor(Math.random() * sounds.length)]
 
@@ -73,9 +74,7 @@ export class RandomProphetButton extends LitElement {
     @internalProperty()
     isPlaying = false
 
-
     play() {
-
         requestAnimationFrame(() => {
             this.isPlaying = true
         })
@@ -125,11 +124,10 @@ export class RandomProphetButton extends LitElement {
                 // @ts-ignore
                 navigator.mediaSession.setActionHandler('nexttrack', () => null)
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 location.reload()
-            },this.time * 1000 + 1000)
+            }, this.time * 1000 + 1000)
         }
-
     }
 
     static get styles() {
@@ -217,14 +215,13 @@ export class RandomProphetButton extends LitElement {
                 <div
                     id="overlay"
                     style=${this.isPlaying
-                ? `animation: play ${this.time}s 0s 1 ease-out, fade-out .75s ${this.time}s 1 ease-out;`
-                : ''}
+                        ? `animation: play ${this.time}s 0s 1 ease-out, fade-out .75s ${this.time}s 1 ease-out;`
+                        : ''}
                 />
-            <audio id="sound" preload="metadata">
-                <source src="/sound/${this.src}" type="audio/mpeg" />
-            </audio>
+                <audio id="sound" preload="metadata">
+                    <source src="/sound/${this.src}" type="audio/mpeg" />
+                </audio>
             </button>
         `
     }
-
 }
